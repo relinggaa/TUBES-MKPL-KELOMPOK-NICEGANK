@@ -33,6 +33,10 @@ jobs:
       - name: Build Maven
         run: mvn -B package -DskipTests --file pom.xml
 
+      - name: Unit Test
+        run: mvn -B test --file pom.xml
+
+
       - name: Upload artefak JAR
         uses: actions/upload-artifact@v4
         with:
