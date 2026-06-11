@@ -25,10 +25,10 @@ Pipeline CI/CD pada proyek ini (didefinisikan dalam `main.yml`) terdiri dari tig
 
 | No | Nama Anggota | NIM | Komponen Tanggung Jawab / Tugas |
 |:--:|:---|:---|:---|
-| 1 | Ariq | [NIM Ariq] | Pipeline CI (Build & Unit Test) / [Tugas Lainnya] |
-| 2 | Relingga | [NIM Relingga] | Pipeline SonarCloud & Deployment / [Tugas Lainnya] |
-| 3 | [Nama Anggota 3] | [NIM 3] | [Deskripsi Tugas 3] |
-| 4 | [Nama Anggota 4] | [NIM 4] | [Deskripsi Tugas 4] |
+| 1 | Ariq Hisyam Nabil| [103022230034] | Pipeline CI (Build & Unit Test) |
+| 2 | Relingga Aditya | [1030222300107] | Pipeline SonarCloud & Deployment |
+| 3 | Muhammad Farras | [103022300042] | Continous Testing |
+| 4 | Riziq Rizwan | [103022300119] | Depoyment |
 
 *(Catatan: Silakan lengkapi/ubah nama, NIM, dan deskripsi tanggung jawab anggota kelompok sesuai dengan pembagian tugas sebenarnya)*
 
