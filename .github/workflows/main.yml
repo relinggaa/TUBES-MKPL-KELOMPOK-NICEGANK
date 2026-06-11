@@ -47,8 +47,8 @@ jobs:
 
   # ─────────────────────────────────────────────────────────────
   #SonarCloud Analysis
-  #          Continuous Inspection relingga
-  #     
+  # Continuous Inspection relingga
+  # 
   # ─────────────────────────────────────────────────────────────
   sonarcloud:
     name: SonarCloud Analysis
