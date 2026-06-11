@@ -68,11 +68,18 @@
             </plugin>
         </plugins>
     </build>
-<distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/relinggaa/TUBES-MKPL-KELOMPOK-NICEGANK</url>
-    </repository>
-</distributionManagement>
+ <distributionManagement>
+        <!-- GitHub Packages: Release -->
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/relinggaa/TUBES-MKPL-KELOMPOK-NICEGANK</url>
+        </repository>
+        <!-- GitHub Packages: Snapshot -->
+        <snapshotRepository>
+            <id>github</id>
+            <name>GitHub Packages Snapshots</name>
+            <url>https://maven.pkg.github.com/relinggaa/TUBES-MKPL-KELOMPOK-NICEGANK</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

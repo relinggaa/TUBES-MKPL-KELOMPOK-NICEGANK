@@ -106,7 +106,7 @@ jobs:
           server-password: GITHUB_TOKEN
 
       - name: Set versi dinamis
-        run: mvn -B versions:set -DnewVersion=1.0.${{ github.run_number }}-SNAPSHOT --file pom.xml
+        run: mvn -B versions:set -DnewVersion=1.0.${{ github.run_number }} --file pom.xml
 
       - name: Package JAR
         run: mvn -B package -DskipTests --file pom.xml
