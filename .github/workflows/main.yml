@@ -124,7 +124,7 @@ jobs:
           echo "Is Fork: ${{ github.event.repository.fork }}"
           echo "Owner: ${{ github.repository_owner }}"
       - name: Deploy ke GitHub Packages
-        run: mvn -B deploy -DskipTests --file pom.xml
+        run: mvn -B -X deploy -DskipTests --file pom.xml
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
