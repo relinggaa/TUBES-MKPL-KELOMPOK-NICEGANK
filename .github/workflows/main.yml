@@ -82,15 +82,15 @@ jobs:
             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
             -Dsonar.scanner.skipJreProvisioning=true
             
-  cd:
+  publish:
     name: Publish ke GitHub Packages
     runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'push' &&
-      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+
     permissions:
       contents: read
       packages: write
+
     steps:
       - name: Checkout kode sumber
         uses: actions/checkout@v4
@@ -105,35 +105,11 @@ jobs:
           server-username: GITHUB_ACTOR
           server-password: GITHUB_TOKEN
 
-      - name: Set versi dinamis
-        run: mvn -B versions:set -DnewVersion=1.0.${{ github.run_number }} --file pom.xml
-
-      - name: Package JAR
-        run: mvn -B package -DskipTests --file pom.xml
-
-      - name: Upload artefak JAR
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-jar
-          path: target/*.jar
-          retention-days: 7
-
-      - name: Debug - Cek settings.xml
-        run: cat ~/.m2/settings.xml
-
-      - name: Debug - Cek apakah repo fork
-        run: |
-          echo "Repository: ${{ github.repository }}"
-          echo "Is Fork: ${{ github.event.repository.fork }}"
-          echo "Owner: ${{ github.repository_owner }}"
-  
       - name: Deploy ke GitHub Packages
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn -e -X deploy -DskipTests --file pom.xml
-
-
+        run: mvn -B deploy -DskipTests --file pom.xml
 
 
 
