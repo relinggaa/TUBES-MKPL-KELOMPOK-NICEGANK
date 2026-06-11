@@ -1,9 +1,40 @@
 # TUBES MKPL - KELOMPOK NICEGANK (SagaraCLI)
 
 ## Deskripsi Proyek
-**SagaraCLI** adalah sebuah aplikasi Command Line Interface (CLI) berbasis Java. Proyek ini merupakan Tugas Besar untuk mata kuliah Manajemen Konfigurasi Perangkat Lunak (MKPL). 
+**SagaraCLI** adalah aplikasi berbasis teks (Command Line Interface / CLI) yang dirancang untuk mengelola data kendaraan secara interaktif. Aplikasi ini dibangun menggunakan bahasa pemrograman **Java (JDK 17)** sebagai bagian dari Tugas Besar untuk mata kuliah **Manajemen Konfigurasi Perangkat Lunak (MKPL)**. 
 
-Proyek ini telah mengimplementasikan arsitektur pipeline CI/CD (Continuous Integration & Continuous Deployment) menggunakan **GitHub Actions** untuk mengotomatisasi proses *build*, *test*, *code quality inspection*, hingga *deployment*.
+Selain sebagai aplikasi fungsional untuk manajemen data kendaraan, proyek ini juga berfungsi sebagai wadah implementasi praktik pengembangan perangkat lunak modern (**DevOps**). Proyek ini menerapkan arsitektur pipeline **CI/CD (Continuous Integration & Continuous Deployment)** otomatis menggunakan **GitHub Actions** serta analisis kualitas kode menggunakan **SonarCloud**.
+
+---
+
+## Fitur Utama Aplikasi (SagaraCLI)
+Aplikasi ini menyediakan sistem manajemen database kendaraan berbasis *in-memory* yang interaktif dengan fitur-fitur sebagai berikut:
+
+1. **Tambah Kendaraan (Create)**
+   - Pengguna dapat menambahkan data kendaraan baru ke database sistem.
+   - Atribut data kendaraan yang disimpan meliputi:
+     - **Merek**: Merek atau produsen kendaraan (misalnya: Toyota, Honda, Yamaha).
+     - **Model**: Tipe atau varian kendaraan (misalnya: Avanza, Civic, NMax).
+     - **Nomor Polisi**: Nomor plat kendaraan yang unik.
+     - **Tahun Produksi**: Tahun pembuatan kendaraan.
+   - Sistem akan mengalokasikan **ID unik** secara otomatis untuk setiap kendaraan baru yang didaftarkan.
+
+2. **Tampilkan Daftar Kendaraan (Read)**
+   - Menampilkan seluruh daftar kendaraan yang telah tersimpan di sistem dalam format tabel terstruktur di terminal CLI.
+   - Dilengkapi penanganan kondisi jika database masih kosong dengan memberikan informasi yang jelas kepada pengguna.
+
+3. **Perbarui Data Kendaraan (Update)**
+   - Memungkinkan pengguna untuk mengubah seluruh informasi detail kendaraan (Merek, Model, Nomor Polisi, dan Tahun Produksi) berdasarkan **ID unik** kendaraan.
+   - Sistem akan memverifikasi keberadaan ID terlebih dahulu sebelum mengizinkan pembaruan data.
+
+4. **Hapus Data Kendaraan (Delete)**
+   - Menghapus data kendaraan dari database berdasarkan **ID unik**.
+   - Dilengkapi dengan fitur **konfirmasi interaktif** (`y/n`) sebelum proses penghapusan dilakukan untuk mencegah ketidaksengajaan terhapusnya data.
+
+5. **Validasi & Penanganan Input (Robust Input Handling)**
+   - Sistem dilengkapi dengan proteksi input (*helper functions*) yang menangani kesalahan ketik pengguna (misal memasukkan teks pada kolom tahun/ID yang membutuhkan angka) sehingga aplikasi tidak mengalami *crash* atau *force close*.
+
+---
 
 ### Arsitektur Pipeline CI/CD
 Pipeline CI/CD pada proyek ini (didefinisikan dalam `main.yml`) terdiri dari tiga tahap utama:
