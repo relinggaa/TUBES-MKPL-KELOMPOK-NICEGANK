@@ -102,8 +102,6 @@ jobs:
           distribution: "temurin"
           cache: maven
           server-id: github
-          server-username: GITHUB_ACTOR
-          server-password: GITHUB_TOKEN
 
       - name: Set versi dinamis
         run: mvn -B versions:set -DnewVersion=1.0.${{ github.run_number }} --file pom.xml
@@ -126,10 +124,9 @@ jobs:
           echo "Is Fork: ${{ github.event.repository.fork }}"
           echo "Owner: ${{ github.repository_owner }}"
       - name: Deploy ke GitHub Packages
-        env:
-          GITHUB_ACTOR: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn -B deploy -DskipTests --file pom.xml
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
 
 
