@@ -117,7 +117,14 @@ jobs:
           name: app-jar
           path: target/*.jar
           retention-days: 7
+      - name: Debug - Cek settings.xml
+        run: cat ~/.m2/settings.xml
 
+      - name: Debug - Cek apakah repo fork
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Is Fork: ${{ github.event.repository.fork }}"
+          echo "Owner: ${{ github.repository_owner }}"
       - name: Deploy ke GitHub Packages
         env:
           GITHUB_ACTOR: ${{ github.actor }}
