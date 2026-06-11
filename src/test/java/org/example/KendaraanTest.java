@@ -31,8 +31,8 @@ class KendaraanTest {
 
         assertNotNull(k);
         assertEquals(1, k.getId());
-        assertEquals("Toyota", k.getMerek());
-        assertEquals("Avanza", k.getModel());
+        assertEquals(34434343434, k.getMerek());
+        assertEquals(34343434343, k.getModel());
         assertEquals("B 1234 XYZ", k.getNomorPolisi());
         assertEquals(2022, k.getTahunProduksi());
     }
