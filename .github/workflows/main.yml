@@ -46,16 +46,13 @@ jobs:
           retention-days: 7
 
   # ─────────────────────────────────────────────────────────────
-  # JOB 2 : SonarCloud Analysis
-  #          Continuous Inspection
-  #          (dev & feature branch )
+  #SonarCloud Analysis
+  #          Continuous Inspection relingga
+  #     
   # ─────────────────────────────────────────────────────────────
   sonarcloud:
     name: SonarCloud Analysis
     runs-on: ubuntu-latest
-    if: |
-      github.ref != 'refs/heads/main' &&
-      github.ref != 'refs/heads/master'
     steps:
       - name: Checkout kode sumber
         uses: actions/checkout@v4
