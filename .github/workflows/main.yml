@@ -102,6 +102,8 @@ jobs:
           distribution: "temurin"
           cache: maven
           server-id: github
+          server-username: GITHUB_ACTOR
+          server-password: GITHUB_TOKEN
 
       - name: Set versi dinamis
         run: mvn -B versions:set -DnewVersion=1.0.${{ github.run_number }} --file pom.xml
@@ -115,29 +117,21 @@ jobs:
           name: app-jar
           path: target/*.jar
           retention-days: 7
+
       - name: Debug - Cek settings.xml
         run: cat ~/.m2/settings.xml
-      - name: Test manual upload via curl
-        run: |
-          curl -v -u "QIZIR1:${{ secrets.GITHUB_TOKEN }}" \
-          -X PUT \
-          -H "Content-Type: application/octet-stream" \
-          --data-binary "@target/sagaraCLI-1.0.39.jar" \
-          "https://maven.pkg.github.com/relinggaa/TUBES-MKPL-KELOMPOK-NICEGANK/io/github/relinggaa/sagaraCLI/1.0.39/sagaraCLI-1.0.39.jar" \
-          2>&1 | tail -30
+
       - name: Debug - Cek apakah repo fork
-        run: |  
+        run: |
           echo "Repository: ${{ github.repository }}"
           echo "Is Fork: ${{ github.event.repository.fork }}"
           echo "Owner: ${{ github.repository_owner }}"
+  
       - name: Deploy ke GitHub Packages
-        run: mvn -B -X deploy -DskipTests --file pom.xml
         env:
-          GITHUB_TOKEN: ${{ github.token }}
-
-
-
-
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn -e -X deploy -DskipTests --file pom.xml
 
 
 
