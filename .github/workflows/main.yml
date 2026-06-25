@@ -32,7 +32,7 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
-#punya farras
+        
       - name: Build Maven
         run: mvn -B package -DskipTests --file pom.xml
       - name: Unit Test
@@ -81,7 +81,7 @@ jobs:
             -Dsonar.java.binaries=target/classes
             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
             -Dsonar.scanner.skipJreProvisioning=true
-            
+  # punyaku 
   publish:
     name: Publish ke GitHub Packages
     runs-on: ubuntu-latest
