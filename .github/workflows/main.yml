@@ -50,6 +50,7 @@ jobs:
   # Continuous Inspection relingga
   # 
   # ─────────────────────────────────────────────────────────────
+  # test
   sonarcloud:
     name: SonarCloud Analysis
     runs-on: ubuntu-latest
