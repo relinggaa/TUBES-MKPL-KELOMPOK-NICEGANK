@@ -34,7 +34,6 @@ jobs:
 
       - name: Build Maven
         run: mvn -B package -DskipTests --file pom.xml
-      # FARRAS UNIT TEST
       - name: Unit Test
         run: mvn -B test --file pom.xml
 
